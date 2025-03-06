@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [imageId, setImageId] = useState(0);
+  const handlePrevClick = () => {
+    if (imageId == 0) {
+      setImageId(imageSet.length - 1);
+    } else {
+      setImageId(imageId - 1);
+    }
+  };
+  const handleNextClick = () => {
+    if (imageId == imageSet.length - 1) {
+      setImageId(0);
+    } else {
+      setImageId(imageId + 1);
+    }
+  };
+  const imageSet = [
+    "https://c4.wallpaperflare.com/wallpaper/86/419/788/random-green-hd-wallpaper-preview.jpg",
+    "https://wallhalla.com/thumbs/42",
+    "https://wallpapers.com/images/hd/random-background-1920-x-1200-33i6p2yl62j0oet3.jpg",
+    "https://c4.wallpaperflare.com/wallpaper/1000/657/147/random-hd-wallpaper-preview.jpg",
+    "https://wallpapersmug.com/large/56941d/random-spikes-abstract-texture.jpg",
+  ];
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="carousel-container">
+        <button onClick={handlePrevClick}>Prev</button>
+        <img className="carousel-image" alt="image" src={imageSet[imageId]} />
+        <button onClick={handleNextClick}>Next</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
