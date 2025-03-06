@@ -26,6 +26,12 @@
   display: flex;
   align-items: center;
 }
+.block-display {
+  display: block;
+}
+.none-display {
+  display: none;
+}
 
 @keyframes logo-spin {
   from {
